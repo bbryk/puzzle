@@ -1,5 +1,7 @@
 """
-module
+https://github.com/bbryk/puzzle
+
+module that contains functions to check the puzzle game
 
 >>> print(validate_board(["**** ****",\
     "***1 ****",\
@@ -16,7 +18,7 @@ False
 
 def create_board(board: list):
     """
-    Creates board by modeficating board
+    Creates board(list with lists) by modeficating another board(list of strs)
 
     >>> create_board(["**** ****", \
         "***1 ****", \
@@ -37,15 +39,16 @@ def create_board(board: list):
 
 def check_line(line_to_check: list):
     '''
+    Checks the line for similar elements
     >>> check_line(['*', '*', '2', '5', '3', '*', '*', '*', '*'])
     True
     '''
     line = []
     for symbol in line_to_check:
-        if symbol not in ('*',' '):
+        if symbol not in ('*', ' '):
             try:
                 symbol = int(symbol)
-                if 1<= symbol <= 9:
+                if 1 <= symbol <= 9:
                     line.append(symbol)
                 else:
                     return False
@@ -91,7 +94,7 @@ def side_switch(new_board: list):
 
 def horizontal_check(new_board: list):
     """
-    sfdg
+    Checks every line in board for similar elements
     >>> print(horizontal_check([['*', '*', '*', '*', ' ', '*', '*', '*', '*'], \
     ['*', '*', '*', '1', ' ', '*', '*', '*', '*'], \
     ['*', '*', ' ', ' ', '3', '*', '*', '*', '*'], ['*', ' ', '4', ' ', '8', '*', '*', '*', '*'], \
@@ -109,7 +112,7 @@ def horizontal_check(new_board: list):
 
 def column_check(new_board: list):
     """
-    fd
+    Checks every column in board for similar elements
     >>> print(column_check([['*', '*', '*', '*', ' ', '*', '*', '*', '*'], \
     ['*', '*', '*', '1', ' ', '*', '*', '*', '*'], \
     ['*', '*', ' ', ' ', '3', '*', '*', '*', '*'], ['*', ' ', '4', ' ', '8', '*', '*', '*', '*'], \
@@ -128,7 +131,7 @@ def column_check(new_board: list):
 
 def colour_positions(new_board: list):
     """
-    g
+    creates list of lists of similar color elements
     >>> print(colour_positions([['*', '*', '*', '*', ' ', '*', '*', '*', '*'], \
     ['*', '*', '*', '1', ' ', '*', '*', '*', '*'], \
     ['*', '*', ' ', ' ', '3', '*', '*', '*', '*'], ['*', ' ', '4', ' ', '8', '*', '*', '*', '*'], \
@@ -155,7 +158,7 @@ def colour_positions(new_board: list):
 
 def color_check(new_board):
     '''
-    checks color positions
+    checks color positions for similar elements
 
     >>> print(color_check([['*', '*', '*', '*', ' ', '*', '*', '*', '*'], \
     ['*', '*', '*', '1', ' ', '*', '*', '*', '*'], \
@@ -174,7 +177,7 @@ def color_check(new_board):
 
 def validate_board(board) -> bool:
     """
-    fghh
+    The main function. Contains all the checks and validates board 
 
     >>> print(validate_board(["**** ****",\
     "***1 ****",\
@@ -192,32 +195,6 @@ def validate_board(board) -> bool:
         return True
     return False
 
-
-
-
-# print(validate_board([
-#     "**** ****",
-#     "***1 ****",
-#     "**  3****",
-#     "* 4 8****",
-#     "     9 5 ",
-#     " 6  83  *",
-#     "3   1  **",
-#     "  8  2***",
-#     "  2  ****"
-# ]))
-
-# print(colour_positions(create_board([
-#     "**** ****",
-#     "***1 ****",
-#     "**  3****",
-#     "* 4 8****",
-#     "     9 5 ",
-#     " 6  83  *",
-#     "3   1  **",
-#     "  8  2***",
-#     "  2  ****"
-# ])))
 
 if __name__ == '__main__':
     import doctest
